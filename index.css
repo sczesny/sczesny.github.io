@@ -14,8 +14,35 @@ body {
     color: #c9d1d9;
 }
 
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#orbit {
+    position: absolute;
+    --z-index: 100;
+    top: calc(50vh - 204px);
+    left: calc(50vw - 204px);
+}
+
+#orbit *:hover {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: #c9d1d9;
+    font-weight: 600;
+}
+
+a[href=""] {
+    opacity: .1;
+}
+
+body>a {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    transition: font-size 0.1s ease-in-out;
+}
+
+body>a:hover {
+    cursor: pointer;
+    font-size: 1.6rem;
 }
