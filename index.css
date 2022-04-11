@@ -4,14 +4,15 @@
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     font-weight: 400;
+    user-select: none;
 }
 
 html,
 body {
     width: 100%;
     height: 100%;
-    background-color: #0d1117;
-    color: #c9d1d9;
+    background-color: #0D1117;
+    color: #C9D1D9;
 }
 
 #orbit {
@@ -27,7 +28,7 @@ body {
 
 a {
     text-decoration: none;
-    color: #c9d1d9;
+    color: #C9D1D9;
     font-weight: 600;
     animation: woosh 1s ease-in-out;
 }
