@@ -1,0 +1,173 @@
+:root {
+    color-scheme: dark;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+}
+
+html,
+body {
+    width: 100dvw;
+    height: 100dvh;
+    overscroll-behavior-y: contain;
+    background-color: #24292e;
+    overflow: hidden;
+    color: #e1e4e8;
+}
+
+body {
+    display: grid;
+    grid-template: 100% / 3fr 5fr;
+    gap: 1px;
+    background-color: #1b1f23;
+}
+
+body>div,
+.panel>div {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+}
+
+body:has(.maximized) {
+    grid-template: 100% / 1fr 1fr;
+}
+
+.panel {
+    display: grid;
+    grid-template-rows: 35px auto;
+    background-color: #24292e;
+}
+
+.panel .header {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 5px;
+    background-color: #1f2428;
+    position: relative;
+}
+
+.shift {
+    margin-left: auto;
+}
+
+label {
+    user-select: none;
+    cursor: pointer;
+    text-wrap: nowrap;
+}
+
+input[type="text"], select {
+    outline: none;
+    padding: 0 3px;
+    /*border: none;
+    background-color: rgb(57, 65, 74);
+    border-radius: 4px;*/
+}
+
+#right-side {
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr;
+    gap: 1px;
+    background-color: #1b1f23;
+    position: relative;
+}
+
+button {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color: #c5c5c5;
+    border-radius: 5px;
+}
+
+button:hover, .settings:focus, .settings:focus-within {
+    background-color: #5a5d5e4f;
+    cursor: pointer;
+}
+
+button svg {
+    pointer-events: none;
+}
+
+.maximized {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.options {
+    display: none;
+}
+
+.options.visible, button:focus>.options, button:focus-within>.options {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: calc(100% + 5px);
+    z-index: 20;
+    box-shadow: rgba(0, 0, 0, 0.36) 0px 2px 8px 0px;
+    background-color: rgb(47, 54, 61);
+    color: rgb(225, 228, 232);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px;
+}
+
+@media (max-width: 100vh) {
+    body {
+        grid-template: 3fr 5fr / 100%;
+    }
+
+    body:has(.maximized) {
+        grid-template: 1fr 1fr / 100%;
+    }
+
+    #left-side {
+        position: relative;
+    }
+
+    #left-side::after {
+        content: "";
+        box-shadow: #00000087 0px 6px 6px -6px inset;
+        position: absolute;
+        bottom: -6px;
+        width: 100%;
+        height: 6px;
+        z-index: 5;
+    }
+
+    #right-side {
+        display: block;
+        overflow-y: scroll;
+    }
+
+    #right-side>.panel {
+        min-height: 20vh;
+    }
+
+    #right-side:has(.maximized) {
+        overflow: visible;
+    }
+}
