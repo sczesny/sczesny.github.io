@@ -34,7 +34,9 @@ while ((match = regex.exec(input)) !== null) {
 
 output = input.replace(/([A-Z])\\w+/g, '<< $& >>');
 
-/**
+/** 
+ * https://mdn.io/regex
+ * 
  * Flags:
  *  /g 	Global search.
  *  /i 	Case-insensitive search.
@@ -58,6 +60,7 @@ output = input.replace(/([A-Z])\\w+/g, '<< $& >>');
  * 
  * Groups & Lookarounds:
  *  (abc) 		capture group
+ *  (?<N>abc) 	capture named group
  *  \\1 			backreference to group #1
  *  (?:abc) 	non-capturing group
  *  (?=abc) 	positive lookahead
