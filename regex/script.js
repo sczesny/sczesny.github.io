@@ -60,7 +60,7 @@ output = input.replace(/([A-Z])\\w+/g, '<< $& >>');
  * 
  * Groups & Lookarounds:
  *  (abc) 		capture group
- *  (?<N>abc) 	capture named group
+ *  (?<key>abc) capture named group
  *  \\1 			backreference to group #1
  *  (?:abc) 	non-capturing group
  *  (?=abc) 	positive lookahead
