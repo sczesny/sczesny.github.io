@@ -4,6 +4,7 @@ declare let input: string;
 declare let output: string;
 declare let regex: RegExp;
 declare let match: RegExpExecArray | null;
+declare function inspect(value: any, ignore?: string[]): string;
 
 `.trim(),"ts:filename/eval.d.ts");r.languages.typescript.javascriptDefaults.setCompilerOptions({lib:["esnext"],target:r.languages.typescript.ScriptTarget.ESNext,allowNonTsExtensions:!0,allowJs:!0,checkJs:!1});r.languages.typescript.javascriptDefaults.setDiagnosticsOptions({noSemanticValidation:!0,skipDefaultLibCheck:!0,diagnosticCodesToIgnore:[7043,7044,80004]});document.getElementById("divider-vertical").addEventListener("mousedown",e=>{e.preventDefault();let n=document.body.getBoundingClientRect();document.onmousemove=t=>{let a=t.clientX-n.left;a=Math.min(Math.max(a,100),n.width-100),document.body.style.gridTemplateColumns=`${a}px 1px auto`},e.target.toggleAttribute("active"),document.onmouseup=()=>{document.onmousemove=null,document.onmouseup=null,e.target.toggleAttribute("active")}});document.getElementById("divider-horizontal").addEventListener("mousedown",e=>{e.preventDefault();let n=document.body.getBoundingClientRect();document.onmousemove=t=>{let a=t.clientY-n.top;a=Math.min(Math.max(a,35),n.height-35),document.body.style.gridTemplateRows=`${a}px 1px auto`},e.target.toggleAttribute("active"),document.onmouseup=()=>{document.onmousemove=null,document.onmouseup=null,e.target.toggleAttribute("active")}});document.addEventListener("keydown",e=>{e.key==="s"&&(e.metaKey||e.ctrlKey)&&e.preventDefault()},!1);document.addEventListener("contextmenu",e=>{e.preventDefault()});var c=l(document.getElementById("code"),{language:"javascript","semanticHighlighting.enabled":!0}),m=l(document.getElementById("input"),{compact:!0,wordWrap:"on",dynmap:!0}),d=l(document.getElementById("output"),{compact:!0,wordWrap:"on",dynmap:!0}),u;function g(){return new Promise((e,n)=>{document.querySelectorAll("iframe").forEach(i=>i.remove()),u&&(clearTimeout(u),u=null);let t=document.createElement("iframe");t.style.display="none",t.sandbox="allow-scripts",window.onmessage=function(i){i.origin==="null"&&i.source===t.contentWindow&&(u&&clearTimeout(u),i.data.error?n("Error: "+i.data.error.msg):e(""+i.data.output),window.onmessage=null,t.parentNode&&document.body.removeChild(t))},t.onload=function(){t.contentWindow.postMessage({src:c.getValue(),input:m.getValue()},"*"),u=setTimeout(()=>{window.onmessage=null,t.parentNode&&document.body.removeChild(t),n("Timeout: Script took too long to execute.")},5e3)},document.body.appendChild(t);let a=`
             function inspect(value, ignore = [], seen = new WeakSet()) {
@@ -87,7 +88,7 @@ Praesent vel enim faucibus, cursus lacus vel, vehicula ex. Vivamus ultricies ero
 regex = /([A-Z])\\w+/g;
 
 while ((match = regex.exec(input)) !== null) {
-    output += inspect(match, ['input']) + '\\n';
+    output += inspect(match, ['input', 'groups']) + '\\n';
 }
 
 output = input.replace(regex, '<< $& >>');
